@@ -6,7 +6,8 @@ from .serializers import UserSerializer
 from django.shortcuts import render, redirect
 from .models import Funcionario 
 from .forms import FuncionarioForm
-
+from django.db.models import Q
+from django.views.generic import TemplateView, ListView
 
 
 def list_func(request):
@@ -43,4 +44,18 @@ def delete_func(request, id):
 
 def info_func(request, id):
 	funcionario = Funcionario.objects.get(id=id)
+	if request.method == 'POST':
+		return redirect('/list_func/')
+
 	return render(request, 'funcionario.html', {'funcionario': funcionario})
+
+class SearchResultsView(ListView):
+    model = Funcionario
+    template_name = 'search_results.html'
+
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = Funcionario.objects.filter(
+            Q(departamento__icontains=query)
+        )
+        return object_list

@@ -1,25 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link href="estilo/styles.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
 </head>
-<body>
+<body bgcolor="#87cefa"><center>
     <h1>Lista de funcionarios</h1>
     <ul>
         {% for funcionario in funcionarios %}
-            <a href="{% url 'myproject.core:update_func' funcionario.id %}"> Update </a>
             <a href="{% url 'myproject.core:info_func' funcionario.id %}">
                 <li> {{ funcionario.nome }}</li>
             </a>
+            <a href="{% url 'myproject.core:update_func' funcionario.id %}"> Update </a>
+            <br>
+            <br>
         {% endfor %}
     </ul>
+    <br>
+    <br>
     <button type="button">
-        <a href="{% url 'myproject.core:create_func' %}">New funcionario</a>
+        <a href="{% url 'myproject.core:create_func' %}">Cadastrar novo funcionario</a>
     </button>
+    <br>
+    <br>
+    <div id="divBusca">
+        <p>Pesquisar por departamento</p>
+        <br>
+        <form action="{% url 'myproject.core:search_results' %}" method="get">
+            <input name="q" type="text" placeholder="Search...">
+        </form>
+    </div>
+    </center>
 </body>
 </html>

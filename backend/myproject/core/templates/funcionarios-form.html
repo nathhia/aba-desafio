@@ -5,21 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Cadastro</title>
 </head>
-<body>
+<body bgcolor="#87cefa"></center>
 
-    <h1>New/Update funcionario</h1>
+    <h1>Cadastrar/atualizar funcionario</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">Save</button>
+        <button type="submit">Salvar</button>
     </form>
-
-
+    <br><br>
     {% if funcionario %}
-        <a href="{% url 'myproject.core:delete_func' funcionario.id %}">Delete</a>
+        <button>
+            <a href="{% url 'myproject.core:delete_func' funcionario.id %}">Deletar</a>
+        </button>
     {% endif %}
+    </center>
 </body>
 </html>

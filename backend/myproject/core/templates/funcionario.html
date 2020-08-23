@@ -5,13 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Funcionario</title>
 </head>
-<body>
+<body bgcolor="#87cefa"><center>
     <ul>
-        {% for funcionario in funcionarios %}
-            <a href="{% url 'myproject.core:update_func' funcionario.id %}">Oi</a>
-        {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+            <h2>Resumo de {{ funcionario.nome }} </h2>
+            <li> Nome: {{ funcionario.nome }}</li>
+            <li> Idade: {{ funcionario.idade }}</li>
+            <li> Departamnto: {{ funcionario.departamento }}</li>
+            <li> Função: {{ funcionario.funcao }}</li>
+            <br>
+            <br>
+            <button type="submit">Voltar</button>
+        </form>
     </ul>
+    </center>
 </body>
 </html>
