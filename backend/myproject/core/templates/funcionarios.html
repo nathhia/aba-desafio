@@ -1,22 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="estilo/styles.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Index</title>
 </head>
 <body>
+    <h1>Lista de funcionarios</h1>
     <ul>
         {% for funcionario in funcionarios %}
             <a href="{% url 'myproject.core:update_func' funcionario.id %}"> Update </a>
-            <a href="">
+            <a href="{% url 'myproject.core:info_func' funcionario.id %}">
                 <li> {{ funcionario.nome }}</li>
             </a>
         {% endfor %}
     </ul>
-
-    <a href="{% url 'myproject.core:create_func' %}">New funcionario</a>
+    <button type="button">
+        <a href="{% url 'myproject.core:create_func' %}">New funcionario</a>
+    </button>
 </body>
 </html>

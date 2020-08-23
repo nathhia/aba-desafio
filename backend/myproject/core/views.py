@@ -40,3 +40,7 @@ def delete_func(request, id):
 		return redirect('/list_func/')
 
 	return render(request, 'func-delete-confirm.html', {'funcionario': funcionario})
+
+def info_func(request, id):
+	funcionario = Funcionario.objects.get(id=id)
+	return render(request, 'funcionario.html', {'funcionario': funcionario})

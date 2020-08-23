@@ -25,10 +25,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: '/index'
+      redirect: '/list_func/',
+      component: () => import("./components/List.vue")
     },
     {
-      path: "/create",
+      path: "/new/'",
       name: "create",
       component: () => import("./components/Create.vue")
     },
@@ -38,9 +39,9 @@ export default new Router({
       component: () => import("./components/Edit.vue")
     },
     {
-      path: "/index",
-      name: "index",
-      component: () => import("./components/Index.vue")
+      path: "/delete/<int:id>/",
+      name: "delete",
+      component: () => import("./components/Delete.vue")
     },
   ]
 });
