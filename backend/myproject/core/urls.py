@@ -7,10 +7,6 @@ from . import views
 
 app_name = 'core'
 
-'''
-router = routers.DefaultRouter()
-router.register('user', v.UserViewSet)
-'''
 
 urlpatterns = [
     path('', list_func, name='list_func'),
